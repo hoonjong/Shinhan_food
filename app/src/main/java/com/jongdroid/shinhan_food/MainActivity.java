@@ -1,17 +1,13 @@
 package com.jongdroid.shinhan_food;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
+
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.View;
-import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.DatePicker;
-import android.app.DialogFragment;
+
 import android.widget.Toast;
 
-import java.util.Calendar;
 
 public class MainActivity extends Activity {
 
@@ -23,6 +19,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mDate = findViewById(R.id.datePicker);
+
+
 
 
         mDate.init(mDate.getYear(), mDate.getMonth(), mDate.getDayOfMonth(),
