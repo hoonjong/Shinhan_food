@@ -8,8 +8,11 @@ import android.app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.renderscript.ScriptGroup;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 
 import android.widget.Toast;
@@ -25,6 +28,26 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mDate = findViewById(R.id.datePicker);
+
+
+        //버튼 설정 및 이벤트 처리
+        Button button = findViewById(R.id.btn1);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCount++;
+                if (mCount == 4) {
+                    Toast.makeText(getApplicationContext(), "관리자 페이지로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), InputActivity.class);
+                    startActivity(intent);
+                }
+
+
+                //Toast.makeText(getApplicationContext(),"버튼 클릭 성공",Toast.LENGTH_SHORT).show();
+                //버튼 클릭시 Toast 메세지"버튼 클릭 성공" 출력
+            }
+        });
+
 
         //액션바 설정하기//
         //액션바 타이틀 변경하기
