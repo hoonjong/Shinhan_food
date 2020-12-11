@@ -14,10 +14,10 @@
 
         <Button
             android:id="@+id/btn1"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
             android:layout_gravity="right"
-            android:background="@drawable/click_star3" />
+            android:background="@drawable/heart_label1" />
 
         <DatePicker
             android:id="@+id/datePicker"

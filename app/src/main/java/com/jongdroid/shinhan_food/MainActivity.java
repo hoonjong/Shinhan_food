@@ -2,13 +2,12 @@ package com.jongdroid.shinhan_food;
 
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.renderscript.ScriptGroup;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,16 +34,18 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //mCount 통해서 버튼 클릭 횟수를 저장
                 mCount++;
+                //버튼 4번 클릭시 다음 이벤트를 실행
                 if (mCount == 4) {
                     Toast.makeText(getApplicationContext(), "관리자 페이지로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), InputActivity.class);
                     startActivity(intent);
+                } else if (mCount == 3) {
+                    Toast.makeText(getApplicationContext(), "3번 클릭하셨습니다.", Toast.LENGTH_SHORT).show();
+                } else if (mCount > 4) {
+                    mCount = 1;
                 }
-
-
-                //Toast.makeText(getApplicationContext(),"버튼 클릭 성공",Toast.LENGTH_SHORT).show();
-                //버튼 클릭시 Toast 메세지"버튼 클릭 성공" 출력
             }
         });
 
@@ -72,16 +73,9 @@ public class MainActivity extends Activity {
 
                                               int dayOfMonth) {
 
-                        // TODO Auto-generated method stub
-
-
                         //monthOfYear는 0값이 1월을 뜻하므로 1을 더해줌 나머지는 같다.
-
                         Toast.makeText(MainActivity.this, "테스트입니다", Toast.LENGTH_LONG).show();
-
-
                     }
-
                 });
     }
 }

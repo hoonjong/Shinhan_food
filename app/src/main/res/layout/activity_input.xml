@@ -7,7 +7,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="준비중입니다"/>
+        android:textSize="40sp"
+        android:text="Now just Testing"/>
+
+
 
 
 
