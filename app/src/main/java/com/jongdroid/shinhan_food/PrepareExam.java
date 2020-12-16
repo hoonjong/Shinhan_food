@@ -1,12 +1,13 @@
 package com.jongdroid.shinhan_food;
 
-
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -127,7 +129,9 @@ public class PrepareExam extends AppCompatActivity {
         readBuffer = new byte[1024];    // 수신 버퍼
         bufferPosition = 0;             // 버퍼 내 수신 문자 저장 위치
 
+
         mWorkerThread = new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void run() {
                 while (!Thread.currentThread().isInterrupted()) {
 
@@ -135,6 +139,7 @@ public class PrepareExam extends AppCompatActivity {
                         int bytesAvailable = mInputStream.available();  // 수신한 데이터 크기를 저장
 
                         if (bytesAvailable > 0) {    // 수신한 데이터가 있으면
+
                             byte[] packetBytes = new byte[bytesAvailable];
                             mInputStream.read(packetBytes);  // 스트림을 사용하여 수신한 데이터를 packetBytes에 넣기
 
@@ -142,13 +147,21 @@ public class PrepareExam extends AppCompatActivity {
                             while (i < bytesAvailable) {
 
                                 if (packetBytes[i] == '\n') {
-                                    final String data = new String(readBuffer, "US-ASCII");
+                                    final String data = new String(readBuffer, StandardCharsets.US_ASCII);
                                     bufferPosition = 0;
-
+                                    //int size = receiveData.length(); //문자열 길이 획득
+                                    // int cut_length = 1;
+                                    //data.substring(size - cut_length);
                                     handler.post(new Runnable() {
                                         public void run() {
                                             // 수신한 문자열을 화면에 보여줌
+                                            //int size = receiveData.length(); //문자열 길이 획득
+                                            //int cut_length = 1;
+                                            //data.substring(size - cut_length);
+
                                             receiveData.setText(data);
+
+
                                         }
 
                                     });
@@ -231,28 +244,30 @@ public class PrepareExam extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_prepare_exam);
 
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         receiveData = findViewById(R.id.receiveData);
 
 
-        img = findViewById(R.id.led);
+
+        img = findViewById(R.id.temp2);
 
         b1.setOnClickListener(new View.OnClickListener() {
 
 
             public void onClick(View v) {
-                transmitData("1");
-                img.setImageResource(R.drawable.led1on);
+                transmitData("a");
+                img.setImageResource(R.drawable.temp2);
+                Toast.makeText(PrepareExam.this, "온도를 측정합니다", Toast.LENGTH_SHORT).show();
             }
-        });
+        });WWW
 
         b2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                transmitData("0");
-                img.setImageResource(R.drawable.led1off);
+                transmitData("b");
+                // img.setImageResource(R.drawable.led1off);
             }
         });
 

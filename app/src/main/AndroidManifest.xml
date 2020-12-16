@@ -23,7 +23,7 @@
 
     </application>
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />  //블루투스 통신을 위하여 사용합니다.
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
 

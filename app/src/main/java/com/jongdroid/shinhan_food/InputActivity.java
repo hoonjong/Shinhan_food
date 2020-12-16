@@ -16,7 +16,7 @@ public class InputActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input);
+        setContentView(R.layout.activity_prepare_exam);
 
         final EditText Text1;
         DatePicker mDate;
@@ -59,6 +59,8 @@ public class InputActivity extends AppCompatActivity {
 
 
         }
+
+
 
 
     }
