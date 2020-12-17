@@ -106,11 +106,11 @@ public class MainActivity extends Activity {
         if (id == R.id.action_chat) {
             Intent email = new Intent(Intent.ACTION_SEND);
             email.setType("plain/text");
-            // email setting 배열로 해놔서 복수 발송 가능
+            // email setting 배열로 해서 복수 발송 가능
             String[] address = {"qkr7627@gmail.com"};
             email.putExtra(Intent.EXTRA_EMAIL, address);
-            email.putExtra(Intent.EXTRA_SUBJECT, "개발자님 문의합니다.");
-            email.putExtra(Intent.EXTRA_TEXT, "내용\n");
+            email.putExtra(Intent.EXTRA_SUBJECT, "개발자님 문의합니다.");  //Gmail 제목 고정
+            email.putExtra(Intent.EXTRA_TEXT, "내용\n"); // 내용 고정
             startActivity(email);
             return true;
         }
