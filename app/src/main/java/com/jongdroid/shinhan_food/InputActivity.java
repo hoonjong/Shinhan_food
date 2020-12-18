@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class InputActivity extends AppCompatActivity {
 
+
+
+    //수정 작업중입니다.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
